@@ -259,9 +259,32 @@ export const evaluateCodeWithAIAgent = async ({
       }
 
       // Validate result
-      const expectedClean = (correctAnswer || '').toLowerCase().replace(/\\s/g, '');
-      const actualClean = actualOutput.toLowerCase().replace(/\\s/g, '');
-      const isPassed = !correctAnswer || actualClean.includes(expectedClean) || actualOutput.includes(correctAnswer);
+      const expectedClean = (correctAnswer || '').toLowerCase().replace(/\s/g, '');
+      const actualClean = actualOutput.toLowerCase().replace(/\s/g, '');
+      let isPassed = !correctAnswer || actualClean.includes(expectedClean) || actualOutput.includes(correctAnswer);
+      
+      // Fallback for descriptive answers (like "Nested subqueries with MAX and AVG...")
+      if (!isPassed && correctAnswer.length > 10 && !correctAnswer.includes('|')) {
+         const sqlKeywords = ['max', 'min', 'avg', 'sum', 'count', 'group by', 'order by', 'join', 'where', 'having', 'select', 'nested', 'subquery', 'subqueries'];
+         const requiredKeywords = sqlKeywords.filter(kw => correctAnswer.toLowerCase().includes(kw));
+         
+         if (requiredKeywords.length > 0) {
+            const srcLower = sourceCode.toLowerCase();
+            // Pass if the source code contains the SQL keywords mentioned in the description
+            // Map "nested"/"subquery" to checking for multiple SELECTs
+            let matches = true;
+            for (let kw of requiredKeywords) {
+               if (kw === 'nested' || kw === 'subquery' || kw === 'subqueries') {
+                  if (srcLower.split('select').length < 3) matches = false;
+               } else if (!srcLower.includes(kw)) {
+                  matches = false;
+               }
+            }
+            if (matches) isPassed = true;
+         } else if (actualOutput.includes('|')) {
+            isPassed = true;
+         }
+      }
 
       return {
         success: true,
