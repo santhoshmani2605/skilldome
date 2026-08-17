@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import initSqlJs from 'sql.js';
+import sqlWasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 export default function SqlPlayground() {
   const [db, setDb] = useState(null);
@@ -14,7 +15,7 @@ export default function SqlPlayground() {
       try {
         // Load the SQL.js WASM file from the public folder
         const SQL = await initSqlJs({
-          locateFile: (file) => `/${file}`
+          locateFile: () => sqlWasmUrl
         });
 
         // Create a fresh in-memory database

@@ -195,6 +195,7 @@ function validateProgramSemantics(code = '', language = 'python') {
 // 4. MAIN EVALUATION CONTROLLER
 // ─────────────────────────────────────────────────────────────
 import initSqlJs from 'sql.js';
+import sqlWasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 export const evaluateCodeWithAIAgent = async ({
   language = 'python',
@@ -228,7 +229,7 @@ export const evaluateCodeWithAIAgent = async ({
   if (lang === 'sql') {
     try {
       const SQL = await initSqlJs({
-        locateFile: (file) => `/${file}`
+        locateFile: () => sqlWasmUrl
       });
       const db = new SQL.Database();
       
