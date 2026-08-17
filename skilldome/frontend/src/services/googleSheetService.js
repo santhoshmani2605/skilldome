@@ -21,19 +21,26 @@ export const normalizeQuestions = (rawQuestions) => {
   if (!Array.isArray(rawQuestions)) return [];
 
   return rawQuestions.map((q, idx) => {
-    const qid = q.QID || `q-${idx + 1}`;
-    const questionText = q.Questions || q.question || '';
-    const domain = (q.Domain || '').toString().trim(); // 'Coding' | 'Non-Coding'
-    const category = q.Category || 'C++';
-    const type = q.Type || 'Basic'; // Basic | Intermediate | Advanced
-    const sampleInput = q.INPUT || '';
-    const rawAnswer = String(q.Answer || '').trim();
+    const qid = q.QID || q.qid || q.id || `q-${idx + 1}`;
+    const questionText = q.Questions || q.question || q.Question || '';
+    
+    let rawDomain = (q.Domain || q.domain || '').toString().trim().toLowerCase();
+    let domain = '';
+    if (rawDomain.includes('non')) {
+      domain = 'Non-Coding';
+    } else if (rawDomain.includes('coding')) {
+      domain = 'Coding';
+    }
+    const category = q.Category || q.category || 'C++';
+    const type = q.Type || q.type || 'Basic'; // Basic | Intermediate | Advanced
+    const sampleInput = q.INPUT || q.input || '';
+    const rawAnswer = String(q.Answer || q.answer || '').trim();
 
     // Check options
-    const optionA = (q.A || '').toString().trim();
-    const optionB = (q.B || '').toString().trim();
-    const optionC = (q.C || '').toString().trim();
-    const optionD = (q.D || '').toString().trim();
+    const optionA = (q.A || q.a || q.optionA || '').toString().trim();
+    const optionB = (q.B || q.b || q.optionB || '').toString().trim();
+    const optionC = (q.C || q.c || q.optionC || '').toString().trim();
+    const optionD = (q.D || q.d || q.optionD || '').toString().trim();
 
     const hasMcqOptions = Boolean(optionA || optionB || optionC || optionD);
 
@@ -57,7 +64,7 @@ export const normalizeQuestions = (rawQuestions) => {
       sampleInput,
       marks: hasMcqOptions ? 2 : 5
     };
-  });
+  }).filter(q => q.question.trim().length > 0);
 };
 
 /**

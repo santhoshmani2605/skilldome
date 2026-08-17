@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { X, Save, Check, Database, Bot, Sparkles, Cpu, Key } from 'lucide-react';
-import { getSavedAppsScriptUrl, saveAppsScriptUrl } from '../services/googleSheetService';
+import { getSavedAppsScriptUrl, saveAppsScriptUrl } from '../../../services/googleSheetService';
 import { 
   getSavedAIApiKey, saveAIApiKey, 
   getSavedAIEngine, saveAIEngine, 
   getSavedAIStrictness, saveAIStrictness 
-} from '../services/aiCodeEvaluatorService';
+} from '../../../services/aiCodeEvaluatorService';
 
 export default function SettingsModal({ isOpen, onClose, onRefreshQuestions }) {
   const [scriptUrl, setScriptUrl] = useState(getSavedAppsScriptUrl());

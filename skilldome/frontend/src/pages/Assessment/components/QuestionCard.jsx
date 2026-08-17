@@ -3,7 +3,7 @@ import {
   Bookmark, ChevronLeft, ChevronRight, 
   RefreshCw, Send, Play, Terminal, Cpu
 } from 'lucide-react';
-import { evaluateCodeWithAIAgent } from '../services/aiCodeEvaluatorService';
+import { evaluateCodeWithAIAgent } from '../../../services/aiCodeEvaluatorService';
 
 export default function QuestionCard({
   question,

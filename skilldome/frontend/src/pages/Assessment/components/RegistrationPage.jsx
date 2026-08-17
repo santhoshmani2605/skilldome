@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { User, Mail, Lock, CheckCircle2, ArrowRight, Eye, EyeOff, Compass, Hash, GraduationCap, ArrowLeft } from 'lucide-react';
-import logoImg from '../UI/logo.final.png';
-import { saveUser, getUserByEmail } from '../services/authService';
+import logoImg from '../../../assets/assessment/logo.final.png';
+import { saveUser, getUserByEmail } from '../../../services/authService';
 
 export default function RegistrationPage({ onNext, onGoToLogin }) {
   const [name, setName] = useState('');

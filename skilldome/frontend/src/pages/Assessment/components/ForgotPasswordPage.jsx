@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Mail, Lock, ArrowRight, Eye, EyeOff, ShieldCheck, KeyRound, Compass, ArrowLeft } from 'lucide-react';
-import logoImg from '../UI/logo.final.png';
-import { getUserByEmail, saveUser } from '../services/authService';
-import { sendOTPToGoogleSheet } from '../services/googleSheetService';
+import logoImg from '../../../assets/assessment/logo.final.png';
+import { getUserByEmail, saveUser } from '../../../services/authService';
+import { sendOTPToGoogleSheet } from '../../../services/googleSheetService';
 
 export default function ForgotPasswordPage({ onGoToLogin }) {
   const [step, setStep] = useState(1); // 1: Email, 2: OTP, 3: Reset

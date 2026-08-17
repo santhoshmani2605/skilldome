@@ -11,9 +11,9 @@ import InterestTopicsPage from './components/InterestTopicsPage';
 import ChooseTypePage from './components/ChooseTypePage';
 import ProctorWarningModal from './components/ProctorWarningModal';
 
-import { fetchQuestionsFromGoogleSheet, submitAnswersToGoogleSheet } from './services/googleSheetService';
-import { evaluateCodeWithAIAgent } from './services/aiCodeEvaluatorService';
-import './index.css';
+import { fetchQuestionsFromGoogleSheet, submitAnswersToGoogleSheet } from '../../services/googleSheetService';
+import { evaluateCodeWithAIAgent } from '../../services/aiCodeEvaluatorService';
+import './Assessment.css';
 
 export default function App() {
   // Steps: LOGIN -> REGISTER -> FORGOT_PASSWORD -> CONFIGURATION -> ASSESSMENT
@@ -91,11 +91,8 @@ export default function App() {
 
     // Filter questions by Domain property from Google Sheet
     let matchingDomainQs = allQuestions.filter(q => {
-      if (!q.domain) return true; // Fallback if Domain missing
       return q.domain.toLowerCase() === domainFilter.toLowerCase();
     });
-
-    if (matchingDomainQs.length === 0) matchingDomainQs = allQuestions;
 
     const categories = Array.from(new Set(matchingDomainQs.map(q => q.category).filter(Boolean)));
     return categories;

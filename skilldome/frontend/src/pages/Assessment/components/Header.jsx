@@ -1,6 +1,6 @@
 import React from 'react';
 import { Timer, CheckCircle2 } from 'lucide-react';
-import logoImg from '../UI/logo.final.png';
+import logoImg from '../../../assets/assessment/logo.final.png';
 
 export default function Header({ 
   timeLeft,
