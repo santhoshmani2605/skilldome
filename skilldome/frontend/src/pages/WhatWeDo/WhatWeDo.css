@@ -1,0 +1,721 @@
+/* ============================================================
+   SKILLDOME — WHAT WE DO PAGE
+   All sections in one file
+   BG: #F7FBFF
+   ============================================================ */
+
+.wwd-page {
+  background-color: #F7FBFF;
+}
+
+/* ── Shared: tag/label badge ── */
+.wwd-tag {
+  display: inline-flex;
+  align-items: center;
+  background: #EFEEFE;
+  color: #5751E1;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 18px;
+  border-radius: 20px;
+  width: fit-content;
+}
+
+/* ── Shared: section heading ── */
+.wwd-section-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #161439;
+  line-height: 1.25;
+}
+
+/* ── Shared: section paragraph ── */
+.wwd-section-para {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.75;
+  max-width: 540px;
+}
+
+/* ── Shared: CTA button ── */
+.wwd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #00D4FF;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 13px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 212, 255, 0.55), 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.wwd-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(0, 212, 255, 0.7), 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.wwd-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px rgba(0, 212, 255, 0.4);
+}
+
+/* ════════════════════════════════════════════
+   SECTION 1 — HERO
+   Image bottom-anchored on LEFT, text on RIGHT
+════════════════════════════════════════════ */
+.wwd-hero {
+  background: linear-gradient(135deg, #0341BA 0%, #00D4FF 100%);
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  min-height: 500px;
+}
+.wwd-hero__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  min-height: 500px;
+}
+
+/* Left = image anchored at bottom LEFT (order 1) */
+.wwd-hero__left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end;
+  order: 1;
+}
+.wwd-hero__woman {
+  width: 420px;
+  max-width: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  display: block;
+}
+/* Right = text on RIGHT side (order 2), vertically centred */
+.wwd-hero__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 72px 0 64px;
+  max-width: 540px;
+  order: 2;
+}
+.wwd-hero__heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
+}
+.wwd-hero__badge-wrap {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+  position: relative;
+  top: -2px;
+}
+.wwd-hero__badge {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+.wwd-hero__para {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.7;
+  max-width: 460px;
+}
+
+/* ════════════════════════════════════════════
+   SECTION 2 — OUR CAREER GUIDANCE PROCESS
+════════════════════════════════════════════ */
+.wwd-process {
+  background-color: #F7FBFF;
+  padding: 88px 0;
+}
+.wwd-process__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 52px;
+}
+.wwd-process__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.wwd-process__heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #161439;
+  line-height: 1.2;
+}
+.wwd-process__para {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.75;
+}
+.wwd-process__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.wwd-process__card {
+  position: relative;
+  border-radius: 16px;
+  padding: 24px 20px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wwd-process__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.13);
+}
+.wwd-process__card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.wwd-process__card-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.wwd-process__card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #161439;
+  line-height: 1.3;
+  flex: 1;
+}
+.wwd-process__card-sparkle {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.wwd-process__card-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14.5px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 1.7;
+}
+
+/* ════════════════════════════════════════════
+   SECTION 3 — IT CAREER GUIDANCE
+════════════════════════════════════════════ */
+.wwd-it {
+  background-color: #F7FBFF;
+  padding: 80px 0;
+}
+.wwd-it__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.wwd-it__left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wwd-it__image {
+  width: 460px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+.wwd-it__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ════════════════════════════════════════════
+   SECTION 4 — NON-IT CAREER GUIDANCE
+════════════════════════════════════════════ */
+.wwd-nonit {
+  background-color: #F7FBFF;
+  padding: 80px 0;
+}
+.wwd-nonit__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+.wwd-nonit__left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.wwd-nonit__right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wwd-nonit__image {
+  width: 460px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ════════════════════════════════════════════
+   SECTION 5 — COMPARISON TABLE
+   Matches screenshot: white card, 4-col grid,
+   blue gradient SkillDome header, red ✕ / green ✓
+════════════════════════════════════════════ */
+.wwd-compare {
+  background-color: #EEF2FB;
+  padding: 80px 0 96px;
+}
+.wwd-compare__container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Section label + heading above the card */
+.wwd-compare__header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.wwd-compare__label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #0341BA;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.wwd-compare__title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #161439;
+  line-height: 1.2;
+}
+
+/* White rounded card containing the whole table */
+.wwd-compare__card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Header row ── */
+.wwd-compare__head {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.2fr;
+  background: #ffffff;
+  border-bottom: 1px solid #E8EDF5;
+}
+.wwd-compare__head-empty {
+  padding: 20px 24px;
+}
+.wwd-compare__head-trad {
+  padding: 20px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #161439;
+  text-align: center;
+  border-left: 1px solid #E8EDF5;
+}
+.wwd-compare__head-sd {
+  padding: 20px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  background: linear-gradient(135deg, #0341BA 0%, #00D4FF 100%);
+  border-radius: 0 16px 0 0;
+}
+
+/* ── Data rows ── */
+.wwd-compare__row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1.2fr;
+  border-bottom: 1px solid #E8EDF5;
+}
+.wwd-compare__row:last-child {
+  border-bottom: none;
+}
+.wwd-compare__row:nth-child(odd) {
+  background: #F9FAFF;
+}
+.wwd-compare__row:nth-child(even) {
+  background: #ffffff;
+}
+
+/* ── Cells ── */
+.wwd-compare__cell {
+  padding: 20px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* Focus (label) cell — left column, bold */
+.wwd-compare__cell--focus {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #161439;
+  display: flex;
+  align-items: center;
+}
+
+/* Traditional cell — centre column */
+.wwd-compare__cell--trad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #6B7280;
+  border-left: 1px solid #E8EDF5;
+  text-align: center;
+  justify-content: center;
+}
+
+/* SkillDome cell — right column */
+.wwd-compare__cell--sd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #374151;
+  border-left: 1px solid #E8EDF5;
+  text-align: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+/* Red ✕ circle */
+.wwd-compare__cross {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #FFE4E4;
+  flex-shrink: 0;
+}
+
+/* Green ✓ circle */
+.wwd-compare__tick {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #DCFCE7;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — TABLET ≤ 960px
+════════════════════════════════════════════ */
+@media (max-width: 960px) {
+
+  /* Hero — stack: text top, image bottom */
+  .wwd-hero {
+    padding: 0;
+    min-height: unset;
+  }
+  .wwd-hero__container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 28px;
+    gap: 0;
+    min-height: unset;
+  }
+  .wwd-hero__left {
+    order: 2;
+    align-self: center;
+    justify-content: center;
+  }
+  .wwd-hero__woman {
+    width: 280px;
+    max-width: 80%;
+    max-height: 320px;
+  }
+  .wwd-hero__right {
+    order: 1;
+    padding: 48px 0 24px;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    gap: 16px;
+  }
+  .wwd-hero__heading { font-size: 34px; }
+  .wwd-hero__badge   { height: 44px; }
+  .wwd-hero__para    { text-align: center; max-width: 100%; font-size: 15px; }
+
+  /* Process */
+  .wwd-process { padding: 64px 0; }
+  .wwd-process__container { padding: 0 28px; gap: 40px; }
+  .wwd-process__grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .wwd-process__heading { font-size: 28px; }
+  .wwd-process__card { padding: 24px 20px 26px; }
+  .wwd-process__card-top {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .wwd-process__card-icon { width: 44px; height: 44px; }
+  .wwd-process__card-title { font-size: 15px; flex: 1; }
+  .wwd-process__card-sparkle { display: block; width: 20px; height: 20px; }
+  .wwd-process__card-desc { font-size: 13.5px; }
+
+  /* IT */
+  .wwd-it { padding: 64px 0; }
+  .wwd-it__container {
+    flex-direction: column;
+    padding: 0 28px;
+    gap: 40px;
+    text-align: center;
+  }
+  .wwd-it__right { align-items: center; }
+  .wwd-it__image { width: 360px; }
+  .wwd-section-para { text-align: center; max-width: 100%; }
+
+  /* Non-IT */
+  .wwd-nonit { padding: 64px 0; }
+  .wwd-nonit__container {
+    flex-direction: column;
+    padding: 0 28px;
+    gap: 40px;
+    text-align: center;
+  }
+  .wwd-nonit__left  { order: 2; align-items: center; }
+  .wwd-nonit__right { order: 1; }
+  .wwd-nonit__image { width: 360px; }
+
+  /* Shared heading */
+  .wwd-section-heading { font-size: 30px; }
+
+  /* Comparison */
+  .wwd-compare { padding: 64px 0 80px; }
+  .wwd-compare__container { padding: 0 28px; max-width: 100%; }
+  .wwd-compare__title { font-size: 26px; }
+  .wwd-compare__head-empty,
+  .wwd-compare__head-trad,
+  .wwd-compare__head-sd { padding: 16px 18px; font-size: 13px; }
+  .wwd-compare__cell { padding: 16px 18px; font-size: 13px; }
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — MOBILE ≤ 600px
+════════════════════════════════════════════ */
+@media (max-width: 600px) {
+
+  /* Hero */
+  .wwd-hero {
+    padding: 0;
+  }
+  .wwd-hero__container {
+    padding: 0 20px;
+  }
+  .wwd-hero__right {
+    padding: 36px 0 20px;
+    gap: 14px;
+  }
+  .wwd-hero__woman {
+    width: 220px;
+    max-height: 260px;
+  }
+  .wwd-hero__heading { font-size: 26px; }
+  .wwd-hero__badge   { height: 36px; }
+  .wwd-hero__para    { font-size: 14px; }
+
+  /* Process */
+  .wwd-process { padding: 52px 0; }
+  .wwd-process__container { padding: 0 20px; gap: 32px; }
+  .wwd-process__heading { font-size: 24px; }
+  .wwd-process__para    { font-size: 14.5px; }
+  .wwd-process__grid    { grid-template-columns: 1fr; }
+  .wwd-process__card-top {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+  .wwd-process__card-icon { width: 48px; height: 48px; }
+  .wwd-process__card-title { font-size: 17px; }
+  .wwd-process__card-sparkle { display: block; }
+  .wwd-process__card-desc { font-size: 14px; }
+
+  /* IT */
+  .wwd-it { padding: 52px 0; }
+  .wwd-it__container { padding: 0 20px; gap: 32px; }
+  .wwd-it__image     { width: 100%; max-width: 300px; }
+
+  /* Non-IT */
+  .wwd-nonit { padding: 52px 0; }
+  .wwd-nonit__container { padding: 0 20px; gap: 32px; }
+  .wwd-nonit__image     { width: 100%; max-width: 300px; }
+
+  /* Shared */
+  .wwd-section-heading { font-size: 24px; }
+  .wwd-section-para    { font-size: 14.5px; }
+  .wwd-btn             { font-size: 14px; padding: 12px 24px; }
+
+  /* Comparison — mobile: stack each row as card */
+  .wwd-compare { padding: 48px 0 60px; }
+  .wwd-compare__container { padding: 0 16px; }
+  .wwd-compare__title { font-size: 22px; }
+  .wwd-compare__label { font-size: 11px; }
+
+  /* Switch from grid to stacked cards */
+  .wwd-compare__card {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* Hide desktop header */
+  .wwd-compare__head { display: none; }
+
+  /* Each row = its own white card */
+  .wwd-compare__row {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff !important;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+    border-bottom: none;
+  }
+
+  /* Focus cell = colored header of each card */
+  .wwd-compare__cell--focus {
+    background: #00D4FF;
+    color: #ffffff;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 0;
+  }
+
+  /* Traditional cell */
+  .wwd-compare__cell--trad {
+    border-left: none;
+    border-bottom: 1px solid #F0F2F8;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    color: #6B7280;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .wwd-compare__cell--trad::before {
+    content: 'Traditional Institute';
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #9CA3AF;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .wwd-compare__cell--trad > span:first-of-type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* SkillDome cell */
+  .wwd-compare__cell--sd {
+    border-left: none;
+    padding: 14px 18px;
+    font-size: 13.5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .wwd-compare__cell--sd::before {
+    content: 'SkillDome';
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    color: #0341BA;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .wwd-compare__cell--sd > span:first-of-type {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .wwd-compare__cross,
+  .wwd-compare__tick { width: 20px; height: 20px; }
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — SMALL MOBILE ≤ 380px
+════════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .wwd-hero__heading   { font-size: 22px; }
+  .wwd-hero__badge     { height: 30px; }
+  .wwd-section-heading { font-size: 20px; }
+  .wwd-compare__title  { font-size: 20px; }
+}

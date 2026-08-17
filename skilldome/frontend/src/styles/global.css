@@ -1,0 +1,41 @@
+/* ============================================
+   SKILLDOME — GLOBAL STYLES
+   BG: #F7FBFF
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-main: #F7FBFF;
+  --color-primary: #0057D9;
+  --color-primary-dark: #003DA5;
+  --color-accent-yellow: #FFC107;
+  --color-text-dark: #1A1A2E;
+  --color-text-gray: #6B7280;
+  --color-white: #FFFFFF;
+  --font-family: 'Poppins', sans-serif;
+  --radius-xl: 30px;
+  --shadow-btn: 0 4px 15px rgba(0, 87, 217, 0.3);
+  --transition: all 0.3s ease;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F7FBFF;
+  color: #1A1A2E;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul, ol { list-style: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; border: none; outline: none; font-family: 'Poppins', sans-serif; }

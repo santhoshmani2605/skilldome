@@ -1,0 +1,453 @@
+/* ============================================================
+   SKILLDOME — CONTACT US PAGE
+   BG: #F7FBFF
+   ============================================================ */
+
+.cu-page {
+  background-color: #F7FBFF;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ────────────────────────────────────────────────────────────
+   SECTION 1 — HERO
+   ──────────────────────────────────────────────────────────── */
+.cu-hero {
+  width: 100%;
+  background: linear-gradient(135deg, #0341BA 0%, #00D4FF 100%);
+  overflow: hidden;
+  padding: 72px 0 64px;
+}
+
+.cu-hero__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.cu-hero__image-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 480px;
+  order: 1;
+}
+
+.cu-hero__image {
+  width: 100%;
+  max-width: 420px;
+  max-height: 390px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 40px rgba(0,0,0,0.18));
+  animation: cuHeroFloat 4s ease-in-out infinite;
+}
+@keyframes cuHeroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+.cu-hero__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  gap: 14px;
+  order: 2;
+}
+
+.cu-hero__tagline {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0;
+}
+
+.cu-hero__badge {
+  background: #F5A623;
+  border-radius: 10px;
+  padding: 8px 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cu-hero__badge-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 42px;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+/* ────────────────────────────────────────────────────────────
+   SECTION 2 — CONTACT INFO CARDS
+   ──────────────────────────────────────────────────────────── */
+.cu-info {
+  background: #F7FBFF;
+  padding: 70px 40px;
+}
+
+.cu-info__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cu-info__header {
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto 48px;
+}
+
+.cu-info__heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin: 0 0 16px;
+}
+
+.cu-info__subtext {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #6B7280;
+  line-height: 1.75;
+  margin: 0;
+  text-align: justify;
+}
+
+.cu-info__cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cu-info__card {
+  background: #F1FDFF;
+  border: 1px solid #C9E4E9;
+  border-radius: 12px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 180px;
+  max-width: 280px;
+  box-shadow: 0 4px 16px rgba(0, 180, 210, 0.10), 0 1px 4px rgba(0, 180, 210, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.cu-info__card:hover {
+  box-shadow: 0 8px 28px rgba(0, 180, 210, 0.18), 0 2px 8px rgba(0, 180, 210, 0.10);
+}
+
+.cu-info__icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-bottom: 14px;
+}
+
+.cu-info__card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1A2E;
+  margin: 0 0 8px;
+}
+
+.cu-info__card-detail {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #6B7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ────────────────────────────────────────────────────────────
+   SECTION 3 — CONTACT FORM
+   ──────────────────────────────────────────────────────────── */
+.cu-form-section {
+  background: #F7FBFF;
+  padding: 60px 40px;
+}
+
+.cu-form-section__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.cu-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  width: 100%;
+  max-width: 530px;
+  flex-shrink: 0;
+}
+
+.cu-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cu-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000000;
+}
+
+.cu-input {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #9F9F9F;
+  border-radius: 10px;
+  padding: 0 16px;
+  height: 56px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.cu-input::placeholder {
+  color: #AAAAAA;
+}
+
+.cu-input:focus {
+  border-color: #00D4FF;
+}
+
+.cu-textarea {
+  width: 100%;
+  background: #FFFFFF;
+  border: 1px solid #9F9F9F;
+  border-radius: 10px;
+  padding: 14px 16px;
+  height: 121px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333333;
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.cu-textarea::placeholder {
+  color: #AAAAAA;
+}
+
+.cu-textarea:focus {
+  border-color: #00D4FF;
+}
+
+.cu-btn {
+  align-self: flex-start;
+  background: #00D4FF;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 36px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.45);
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.cu-btn:hover {
+  background: #00bde8;
+  box-shadow: 0 8px 26px rgba(0, 212, 255, 0.6);
+}
+
+.cu-btn:active {
+  transform: scale(0.97);
+}
+
+.cu-form-image-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cu-form-woman {
+  width: 380px;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ────────────────────────────────────────────────────────────
+   SECTION 4 — VISIT OUR OFFICE
+   ──────────────────────────────────────────────────────────── */
+.cu-map-section {
+  background: #F7FBFF;
+  padding: 60px 40px;
+}
+
+.cu-map-section__inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cu-map__heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1A1A2E;
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.cu-map__wrap {
+  display: block;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #C9E4E9;
+  box-shadow: 0 4px 20px rgba(0, 180, 210, 0.12);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.cu-map__wrap:hover {
+  box-shadow: 0 8px 32px rgba(0, 180, 210, 0.22);
+}
+
+.cu-map__img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.cu-map__badge {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #0341BA;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — TABLET (≤ 900px)
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* Hero */
+  .cu-hero {
+    padding: 52px 0 48px;
+  }
+  .cu-hero__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 0 28px;
+  }
+  .cu-hero__image-wrap {
+    order: 2;
+    max-width: 380px;
+    width: 75%;
+    justify-content: center;
+  }
+  .cu-hero__image { width: 100%; max-width: 320px; }
+  .cu-hero__text {
+    order: 1;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+    gap: 12px;
+    max-width: 100%;
+  }
+  .cu-hero__tagline { font-size: 34px; text-align: center; }
+  .cu-hero__badge { padding: 6px 22px; }
+  .cu-hero__badge-text { font-size: 36px; }
+
+  /* Info */
+  .cu-info { padding: 50px 24px; }
+  .cu-info__cards { gap: 16px; }
+  .cu-info__card { max-width: 100%; min-width: 100%; }
+
+  /* Form */
+  .cu-form-section { padding: 50px 24px; }
+  .cu-form-section__inner { flex-direction: column; align-items: center; }
+  .cu-form-image-wrap { order: -1; }
+  .cu-form-woman { width: 260px; }
+  .cu-form-wrap { max-width: 100%; }
+  .cu-btn { align-self: flex-start; }
+
+  /* Map */
+  .cu-map-section { padding: 50px 24px; }
+  .cu-map__img { height: 300px; }
+}
+
+/* ────────────────────────────────────────────────────────────
+   RESPONSIVE — MOBILE (≤ 480px)
+   ──────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Hero */
+  .cu-hero {
+    padding: 52px 0 48px;
+  }
+  .cu-hero__inner {
+    padding: 0 20px;
+    gap: 32px;
+  }
+  .cu-hero__image-wrap { width: 75%; max-width: 260px; }
+  .cu-hero__image { width: 100%; }
+  .cu-hero__tagline { font-size: 26px; }
+  .cu-hero__badge { padding: 5px 18px; border-radius: 8px; }
+  .cu-hero__badge-text { font-size: 28px; }
+
+  /* Info */
+  .cu-info { padding: 40px 16px; }
+  .cu-info__heading { font-size: 22px; }
+
+  /* Form */
+  .cu-form-section { padding: 36px 16px; }
+  .cu-label { font-size: 15px; }
+  .cu-input { height: 48px; }
+  .cu-textarea { height: 100px; }
+  .cu-form-woman { width: 200px; }
+  .cu-btn { font-size: 14px; padding: 12px 32px; }
+
+  /* Map */
+  .cu-map-section { padding: 36px 16px; }
+  .cu-map__heading { font-size: 22px; }
+  .cu-map__img { height: 220px; }
+  .cu-map__badge { font-size: 11px; padding: 6px 12px; }
+}

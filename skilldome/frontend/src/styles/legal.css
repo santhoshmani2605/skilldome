@@ -1,0 +1,67 @@
+/* ============================================
+   SKILLDOME — SHARED LEGAL PAGE STYLES
+   Used by: Disclaimer, Terms of Service, Privacy Policy
+   ============================================ */
+
+.legal-page {
+  background-color: var(--bg-main);
+  min-height: 60vh;
+  padding: 60px 0 80px;
+}
+
+.legal-page__container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.legal-page__title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 4px;
+}
+
+.legal-page__updated {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-gray);
+  margin-top: -10px;
+  margin-bottom: 8px;
+}
+
+.legal-page__article {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-top: 8px;
+}
+
+.legal-page__container p {
+  font-size: 14.5px;
+  color: var(--color-text-gray);
+  line-height: 1.85;
+  text-align: justify;
+}
+
+.legal-page__container a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.legal-page__container a:hover {
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 600px) {
+  .legal-page__container {
+    padding: 0 20px;
+  }
+
+  .legal-page__title {
+    font-size: 22px;
+  }
+}

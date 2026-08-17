@@ -1,0 +1,552 @@
+/* ═══════════════════════════════════════════════
+   AboutUs.css — SkillDome About Us Page
+   Fonts : Poppins (headings) · Inter (body)
+   Page BG : #F7FBFF
+═══════════════════════════════════════════════ */
+
+.about-page {
+  background: #F7FBFF;
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+.about-hero {
+  background: linear-gradient(135deg, #0341BA 0%, #00D4FF 100%);
+  padding: 72px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-hero__inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.about-hero::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  top: -150px;
+  right: -100px;
+  pointer-events: none;
+}
+
+.about-hero__content {
+  flex: 1;
+  max-width: 520px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-hero__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  color: #ffffff;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.about-hero__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 460px;
+}
+
+.about-hero__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #00D4FF;
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.45),
+              0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-hero__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 212, 255, 0.55),
+              0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+.about-hero__image-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 560px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-hero__image-wrap img {
+  width: 100%;
+  max-width: 480px;
+  max-height: 390px;
+  object-fit: contain;
+  display: block;
+  animation: aboutHeroFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 12px 40px rgba(0,0,0,0.18));
+}
+
+@keyframes aboutHeroFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+/* ════════════════════════════════
+   OUR STORY
+════════════════════════════════ */
+.about-story {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 80px;
+  background: #F7FBFF;
+}
+
+.about-story__img-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-story__img-wrap img {
+  width: clamp(280px, 32vw, 420px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.about-story__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 2.8vw, 36px);
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.about-story__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: #555;
+  line-height: 1.85;
+}
+
+/* ════════════════════════════════
+   VISION & MISSION
+════════════════════════════════ */
+.about-vm {
+  display: flex;
+  gap: 40px;
+  padding: 70px 80px;
+  background: #F7FBFF;
+}
+
+.about-vm__card {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 32px 36px;
+  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.07);
+  text-align: center;
+}
+
+.about-vm__icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #00D4FF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.about-vm__icon img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.about-vm__heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(20px, 2vw, 26px);
+  color: #00D4FF;
+  margin-bottom: 16px;
+}
+
+.about-vm__text {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.1vw, 14px);
+  color: #555;
+  line-height: 1.85;
+}
+
+/* ════════════════════════════════
+   OUR TEAM
+════════════════════════════════ */
+.about-team {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 70px 80px;
+  background: #F7FBFF;
+}
+
+.about-team__text {
+  flex: 1;
+}
+
+.about-team__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 2.8vw, 36px);
+  color: #1a1a1a;
+  margin-bottom: 22px;
+}
+
+.about-team__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: #555;
+  line-height: 1.85;
+}
+
+.about-team__img-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-team__img-wrap img {
+  width: clamp(280px, 32vw, 420px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ════════════════════════════════
+   STATS BANNER
+════════════════════════════════ */
+
+/* Outer wrapper */
+.about-stats-wrapper {
+  background: #F7FBFF;
+  padding: 60px 40px 72px;
+}
+
+/* Gradient card */
+.about-stats {
+  background: linear-gradient(135deg, #0341BA 0%, #00D4FF 100%);
+  border-radius: 20px;
+  padding: 32px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: visible;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+/* keep for JSX compatibility */
+.about-stats__left {
+  display: contents;
+}
+
+/* Left: title text */
+.about-stats__text {
+  flex: 0 0 auto;
+  max-width: 280px;
+}
+
+.about-stats__title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.about-stats__title span {
+  background: #FFD700;
+  color: #0341BA;
+  font-weight: 700;
+  padding: 2px 12px 4px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+/* Centre: numbers row */
+.about-stats__nums-row {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Vertical divider */
+.about-stats__divider {
+  width: 1.5px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+  margin: 0 48px;
+}
+
+/* Stat item */
+.about-stats__item {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.about-stats__num {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  font-size: 42px;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.about-stats__lbl {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 6px;
+  white-space: nowrap;
+}
+
+/* People image — bleeds above the card on the right */
+.about-stats__people {
+  flex-shrink: 0;
+  width: clamp(180px, 18vw, 240px);
+  align-self: flex-end;
+  margin-top: -60px;
+  position: relative;
+  z-index: 2;
+}
+
+.about-stats__people img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE — TABLET (≤ 900px)
+════════════════════════════════ */
+@media (max-width: 900px) {
+
+  .about-hero {
+    padding: 52px 0 48px;
+  }
+
+  .about-hero__inner {
+    flex-direction: column;
+    padding: 0 28px;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .about-hero__content {
+    max-width: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-hero__title {
+    font-size: 34px;
+  }
+
+  .about-hero__image-wrap {
+    max-width: 380px;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .about-story,
+  .about-team {
+    flex-direction: column;
+    padding: 50px 32px;
+    gap: 36px;
+  }
+
+  .about-story__img-wrap img,
+  .about-team__img-wrap img {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .about-vm {
+    flex-direction: column;
+    padding: 50px 32px;
+  }
+
+  /* Stats — tablet */
+  .about-stats-wrapper {
+    padding: 48px 24px 56px;
+  }
+
+  .about-stats {
+    padding: 28px 28px;
+    border-radius: 16px;
+    gap: 16px;
+  }
+
+  .about-stats__text {
+    max-width: 200px;
+  }
+
+  .about-stats__title {
+    font-size: 16px;
+  }
+
+  .about-stats__divider {
+    height: 52px;
+    margin: 0 24px;
+  }
+
+  .about-stats__num {
+    font-size: 34px;
+  }
+
+  .about-stats__lbl {
+    font-size: 12px;
+  }
+
+  .about-stats__people {
+    width: clamp(120px, 14vw, 170px);
+    margin-top: -50px;
+  }
+}
+
+/* ════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 480px)
+════════════════════════════════ */
+@media (max-width: 480px) {
+
+  .about-hero {
+    padding: 52px 0 48px;
+  }
+
+  .about-hero__inner {
+    padding: 0 20px;
+    gap: 36px;
+  }
+
+  .about-hero__title {
+    font-size: 28px;
+  }
+
+  .about-hero__desc {
+    font-size: 15px;
+  }
+
+  .about-hero__image-wrap {
+    width: 80%;
+    max-width: 300px;
+  }
+
+  .about-story,
+  .about-team {
+    padding: 40px 20px;
+  }
+
+  .about-vm {
+    padding: 40px 20px;
+  }
+
+  .about-vm__card {
+    padding: 28px 20px;
+  }
+
+  /* Stats — mobile: stacked layout */
+  .about-stats-wrapper {
+    padding: 40px 16px 48px;
+  }
+
+  .about-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 20px;
+    border-radius: 14px;
+    gap: 16px;
+    overflow: visible;
+  }
+
+  .about-stats__text {
+    max-width: 100%;
+  }
+
+  .about-stats__title {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .about-stats__title span {
+    font-size: 15px;
+    padding: 1px 8px 2px;
+  }
+
+  .about-stats__nums-row {
+    justify-content: flex-start;
+    flex: unset;
+    width: 100%;
+  }
+
+  .about-stats__divider {
+    height: 40px;
+    margin: 0 20px;
+  }
+
+  .about-stats__num {
+    font-size: 28px;
+  }
+
+  .about-stats__lbl {
+    font-size: 11px;
+  }
+
+  /* People image on mobile — bottom right, bleeds above */
+  .about-stats__people {
+    display: block;
+    width: 120px;
+    position: absolute;
+    right: 16px;
+    bottom: 0;
+    margin-top: 0;
+    align-self: unset;
+  }
+}

@@ -1,0 +1,230 @@
+/* ============================================
+   SKILLDOME — FOOTER STYLES
+   ============================================ */
+
+.footer {
+  background-color: #F0F4FB;
+  border-top: 1px solid #E0E8F5;
+  margin-top: auto;
+}
+
+.footer__container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 44px 48px 40px;
+}
+
+/* ── Top Row: Logo + Socials ── */
+.footer__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.footer__logo img {
+  height: 90px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+}
+
+/* ── Social Icons ── */
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.social-icon img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  display: block;
+}
+
+.social-icon:hover {
+  transform: translateY(-3px);
+}
+
+/* ── Divider ── */
+.footer__divider {
+  width: 100%;
+  height: 1px;
+  background-color: #D1DCF0;
+  margin-bottom: 32px;
+}
+
+/* ── Bottom Grid ── */
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr 1.4fr;
+  gap: 32px;
+}
+
+.footer__col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ── Column Title (Quick Links) ── */
+.footer__col-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A2E;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+/* ── Nav / Quick links ── */
+.footer__link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #4B5563;
+  transition: color 0.2s ease;
+  line-height: 1.5;
+  text-decoration: none;
+  text-align: center;
+}
+
+.footer__link:hover {
+  color: #0057D9;
+}
+
+/* ── Legal links (col 1) ── */
+.footer__legal-link {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #4B5563;
+  transition: color 0.2s ease;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.footer__legal-link:hover {
+  color: #0057D9;
+}
+
+/* ── Address ── */
+.footer__address {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  color: #4B5563;
+  line-height: 1.8;
+}
+
+/* ══════════════════════════════════════════
+   TABLET  (≤ 900px)
+══════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .footer__container {
+    padding: 36px 32px 32px;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+  }
+
+  .footer__logo img {
+    height: 72px;
+  }
+}
+
+/* ══════════════════════════════════════════
+   MOBILE  (≤ 560px)
+══════════════════════════════════════════ */
+@media (max-width: 560px) {
+  .footer__container {
+    padding: 28px 20px 24px;
+  }
+
+  .footer__top {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .footer__logo {
+    align-self: center;
+  }
+
+  .footer__logo img {
+    height: 56px;
+  }
+
+  .footer__socials {
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .social-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 20px;
+  }
+
+  .footer__col {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer__col-title {
+    text-align: center;
+  }
+
+  .footer__link,
+  .footer__legal-link {
+    text-align: center;
+  }
+
+  .footer__address {
+    text-align: center;
+  }
+}
+
+/* ══════════════════════════════════════════
+   SMALL MOBILE  (≤ 380px)
+══════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer__col {
+    align-items: center;
+    text-align: center;
+  }
+}
