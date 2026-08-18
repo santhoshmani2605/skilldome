@@ -144,19 +144,24 @@ export const submitAnswersToGoogleSheet = async (payload) => {
   const scriptUrl = SUBMIT_SCRIPT_URL;
 
   try {
-    await fetch(scriptUrl, {
+    const response = await fetch(scriptUrl, {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'text/plain;charset=utf-8',
       },
       body: JSON.stringify(payload)
     });
 
-    return {
-      success: true,
-      message: 'Assessment submitted successfully to Google Sheet!'
-    };
+    const result = await response.json();
+    
+    if (result.success) {
+      return {
+        success: true,
+        message: 'Assessment submitted successfully to Google Sheet!'
+      };
+    } else {
+      throw new Error(result.error || result.message || 'Unknown error from Google Apps Script');
+    }
   } catch (error) {
     console.error('[GoogleSheetService] Submission Error:', error);
     return {
