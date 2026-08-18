@@ -395,8 +395,8 @@ export default function App() {
         candidateEmail: candidateInfo.email,
         email: candidateInfo.email,
         password: candidateInfo.password,
-        studentId: candidateInfo.studentId,
-        batchId: candidateInfo.batchId,
+        studentId: candidateInfo.email, // Use email as studentId since it's required by the script
+        batchId: candidateInfo.batchId || "DEFAULT", // Fallback if script expects a batch ID
         interestType: candidateInfo.interestType,
         categoryConfigs: JSON.stringify(categoryConfigs),
         selectedTopics: Object.keys(categoryConfigs).join(', '),
