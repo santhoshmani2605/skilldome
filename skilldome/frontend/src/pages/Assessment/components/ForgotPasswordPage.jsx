@@ -39,8 +39,6 @@ export default function ForgotPasswordPage({ onGoToLogin }) {
     if (response.success) {
       setErrors({});
       setStep(2);
-      // For testing, since OTP may not actually email out:
-      alert(`OTP sent to your email. (For testing, your OTP is: ${code})`);
     } else {
       setErrors({ email: 'Failed to send OTP. Please try again later.' });
     }

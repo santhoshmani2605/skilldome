@@ -186,8 +186,8 @@ export default function InterestTopicsPage({
 
                       {/* Per-Category Level Selector */}
                       {isSelected && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                          <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', marginRight: '4px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '6px' }}>
+                          <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', marginRight: '4px', width: '100%', display: 'block', marginBottom: '4px' }}>
                             Level:
                           </span>
                           {LEVEL_OPTIONS.map(lvl => {
@@ -198,15 +198,17 @@ export default function InterestTopicsPage({
                                 type="button"
                                 onClick={() => setCategoryLevel(topic, lvl.id)}
                                 style={{
-                                  padding: '6px 14px',
+                                  padding: '8px 12px',
                                   borderRadius: '8px',
-                                  fontSize: '0.82rem',
+                                  fontSize: '0.78rem',
                                   fontWeight: isLvlSelected ? 700 : 600,
                                   border: isLvlSelected ? `2px solid ${lvl.color}` : '1px solid var(--border-color)',
                                   background: isLvlSelected ? lvl.bg : 'var(--bg-card-solid)',
                                   color: isLvlSelected ? lvl.color : 'var(--text-muted)',
                                   cursor: 'pointer',
-                                  transition: 'all 0.2s ease'
+                                  transition: 'all 0.2s ease',
+                                  flex: '1',
+                                  textAlign: 'center'
                                 }}
                               >
                                 {lvl.label}
@@ -291,8 +293,8 @@ export default function InterestTopicsPage({
             className="btn btn-primary"
             style={{
               flex: 1,
-              padding: '16px',
-              fontSize: '1.05rem',
+              padding: '12px 16px',
+              fontSize: '0.95rem',
               fontWeight: 700,
               borderRadius: '12px',
               display: 'flex',

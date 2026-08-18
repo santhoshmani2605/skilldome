@@ -171,31 +171,32 @@ export const submitAnswersToGoogleSheet = async (payload) => {
  * Send OTP via Google Apps Script (Triggers MailApp on backend)
  */
 export const sendOTPToGoogleSheet = async (email, otp) => {
-  const scriptUrl = SUBMIT_SCRIPT_URL;
-
   try {
     const payload = {
-      action: 'sendOTP',
       email: email,
       otp: otp
     };
 
-    await fetch(scriptUrl, {
+    const response = await fetch('/api/send-otp', {
       method: 'POST',
-      mode: 'no-cors',
       headers: {
-        'Content-Type': 'text/plain;charset=utf-8',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload)
     });
 
-    // When using no-cors, the response is opaque, so we assume success if no network error occurred
-    return {
-      success: true,
-      message: 'OTP Sent via Google Apps Script'
-    };
+    const data = await response.json();
+
+    if (data.success) {
+      return {
+        success: true,
+        message: 'OTP Sent successfully'
+      };
+    } else {
+      throw new Error(data.message || 'Failed to send OTP');
+    }
   } catch (error) {
-    console.error('[GoogleSheetService] OTP Send Error:', error);
+    console.error('[OTP Service] OTP Send Error:', error);
     return {
       success: false,
       error: error.message,
