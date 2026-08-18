@@ -186,7 +186,7 @@ export default function InterestTopicsPage({
 
                       {/* Per-Category Level Selector */}
                       {isSelected && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                           <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', marginRight: '4px' }}>
                             Level:
                           </span>
@@ -268,7 +268,7 @@ export default function InterestTopicsPage({
         </div>
 
         {/* Action Controls */}
-        <div style={{ display: 'flex', gap: '14px' }}>
+        <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
           <button
             onClick={onBack}
             className="btn btn-secondary"

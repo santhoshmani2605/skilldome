@@ -578,28 +578,18 @@ export default function QuestionCard({
         gap: '12px'
       }}>
 
-        <button
-          onClick={onClearAnswer}
-          disabled={!isAnswered}
-          className="btn btn-outline btn-sm"
-          style={{ opacity: isAnswered ? 1 : 0.4 }}
-        >
-          <RefreshCw size={14} />
-          <span>Clear Response</span>
-        </button>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
           <button
-            onClick={onPrev}
-            disabled={questionIndex === 0}
-            className="btn btn-secondary"
-            style={{ opacity: questionIndex === 0 ? 0.4 : 1 }}
+            onClick={onClearAnswer}
+            disabled={!isAnswered}
+            className="btn btn-outline btn-sm"
+            style={{ opacity: isAnswered ? 1 : 0.4 }}
           >
-            <ChevronLeft size={18} />
-            <span>Previous</span>
+            <RefreshCw size={14} />
+            <span>Clear Response</span>
           </button>
 
-          {questionIndex === totalQuestions - 1 ? (
+          {questionIndex === totalQuestions - 1 && (
             <div style={{ position: 'relative' }}>
               <button
                 onClick={onSubmitTest}
@@ -627,28 +617,40 @@ export default function QuestionCard({
                 )}
               </button>
             </div>
-          ) : (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              {!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult && (
-                <span style={{ fontSize: '0.78rem', color: 'var(--accent-warning)', fontWeight: 600 }}>
-                  ⚠️ Run & test code to unlock Next
-                </span>
-              )}
-              <button
-                onClick={onNext}
-                disabled={!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult}
-                className="btn btn-primary"
-                style={{
-                  opacity: (!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult) ? 0.5 : 1,
-                  cursor: (!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult) ? 'not-allowed' : 'pointer'
-                }}
-                title={(!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult) ? 'Please click "Run & Test Code" first before moving to next question.' : ''}
-              >
-                <span>Next</span>
-                <ChevronRight size={18} />
-              </button>
-            </div>
           )}
+        </div>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <button
+            onClick={onPrev}
+            disabled={questionIndex === 0}
+            className="btn btn-secondary"
+            style={{ opacity: questionIndex === 0 ? 0.4 : 1 }}
+          >
+            <ChevronLeft size={18} />
+            <span>Previous</span>
+          </button>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult && (
+              <span style={{ fontSize: '0.78rem', color: 'var(--accent-warning)', fontWeight: 600 }}>
+                ⚠️ Run & test code to unlock Next
+              </span>
+            )}
+            <button
+              onClick={onNext}
+              disabled={questionIndex === totalQuestions - 1 || (!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult)}
+              className="btn btn-primary"
+              style={{
+                opacity: (questionIndex === totalQuestions - 1 || (!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult)) ? 0.5 : 1,
+                cursor: (questionIndex === totalQuestions - 1 || (!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult)) ? 'not-allowed' : 'pointer'
+              }}
+              title={(!isMcq && Boolean(userAnswer?.trim()) && !evaluationResult) ? 'Please click "Run & Test Code" first before moving to next question.' : ''}
+            >
+              <span>Next</span>
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
       </div>
     </div>

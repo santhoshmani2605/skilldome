@@ -6,7 +6,6 @@ import { saveUser, getUserByEmail } from '../../../services/authService';
 export default function RegistrationPage({ onNext, onGoToLogin }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [batchId, setBatchId] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -24,8 +23,6 @@ export default function RegistrationPage({ onNext, onGoToLogin }) {
     } else if (getUserByEmail(email.trim().toLowerCase())) {
       errs.email = 'This email is already registered. Please log in.';
     }
-    
-    if (!batchId.trim()) errs.batchId = 'Please enter your Batch ID';
     
     if (!password.trim()) errs.password = 'Please enter a password';
     else if (password.length < 4) errs.password = 'Password must be at least 4 characters';
@@ -45,8 +42,7 @@ export default function RegistrationPage({ onNext, onGoToLogin }) {
     const userInfo = {
       name: name.trim(),
       email: email.trim().toLowerCase(),
-      password: password.trim(),
-      batchId: batchId.trim()
+      password: password.trim()
     };
     
     // Save user locally
@@ -193,34 +189,6 @@ export default function RegistrationPage({ onNext, onGoToLogin }) {
                 />
               </div>
               {errors.email && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '4px', fontWeight: 600 }}>{errors.email}</p>}
-            </div>
-
-            {/* Batch ID */}
-            <div>
-              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#334155', marginBottom: '8px' }}>
-                Batch ID
-              </label>
-              <div style={{ position: 'relative' }}>
-                <GraduationCap size={18} color="#64748b" style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)' }} />
-                <input
-                  type="text"
-                  placeholder="BATCH-2026"
-                  value={batchId}
-                  onChange={(e) => { setBatchId(e.target.value); setErrors(prev => ({...prev, batchId: ''})); }}
-                  style={{
-                    width: '100%',
-                    padding: '13px 16px 13px 48px',
-                    borderRadius: '12px',
-                    border: errors.batchId ? '1.5px solid #ef4444' : '1px solid #cbd5e1',
-                    background: '#f8fafc',
-                    color: '#0f172a',
-                    fontSize: '0.95rem',
-                    outline: 'none',
-                    transition: 'all 0.2s ease'
-                  }}
-                />
-              </div>
-              {errors.batchId && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '4px', fontWeight: 600 }}>{errors.batchId}</p>}
             </div>
 
             {/* Password */}
