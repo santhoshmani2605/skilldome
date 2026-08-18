@@ -49,8 +49,17 @@ export default function ResultSummaryModal({ isOpen, onClose, results, onRestart
             fontSize: '0.85rem',
             color: results.syncStatus.success ? '#34d399' : '#f87171'
           }}>
-            <CheckCircle2 size={16} />
-            <span>{results.syncStatus.success ? 'Responses saved successfully' : 'Could not save — please contact administrator'}</span>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                <CheckCircle2 size={16} />
+                <span>{results.syncStatus.success ? 'Responses saved successfully' : 'Failed to save responses'}</span>
+              </div>
+              {!results.syncStatus.success && results.syncStatus.error && (
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, marginTop: '4px' }}>
+                  Error: {results.syncStatus.error}
+                </span>
+              )}
+            </div>
           </div>
         )}
 
