@@ -307,16 +307,26 @@ export default function App() {
 
     try {
       const answers = await Promise.all(questions.map(async (q, idx) => {
-        const answer = (userAnswers[q.id] || '').toString();
+        const answerId = (userAnswers[q.id] || '').toString();
+        let answerText = answerId;
+        
+        // If it's an MCQ, resolve 'A', 'B' to the actual text value
+        if (q.isMcq && answerId) {
+          const selectedOpt = q.options?.find(o => o.id === answerId);
+          if (selectedOpt) {
+            answerText = selectedOpt.text;
+          }
+        }
+
         let execOut = executionOutputs[q.id];
 
         // For coding questions: extract actual stdout / compilation output to store in Google Sheet Output column
         let codeOutput = '';
-        if (!q.isMcq && answer.trim()) {
+        if (!q.isMcq && answerText.trim()) {
           if (!execOut) {
             execOut = await evaluateCodeWithAIAgent({
               language: q.category ? q.category.toLowerCase() : 'python',
-              sourceCode: answer,
+              sourceCode: answerText,
               questionPrompt: q.question,
               sampleInput: q.sampleInput || '',
               correctAnswer: q.correctAnswer || '',
@@ -336,8 +346,8 @@ export default function App() {
           sNo: q.sNo || (idx + 1),
           qid: q.id,
           question: q.question,
-          selectedAnswer: answer,
-          answer: answer,
+          selectedAnswer: answerText,
+          answer: answerText,
           codeOutput: codeOutput,
           actualOutput: codeOutput,
           OUTPUT: codeOutput,
@@ -360,10 +370,20 @@ export default function App() {
         const outStr = out ? (typeof out === 'object' ? (out.actualOutput || out.stdout || out.compileOutput || out.output || '') : String(out)) : '';
         userOutputs[q.id] = outStr;
         
+        // Resolve MCQ text for userAnswers payload
+        const answerId = (userAnswers[q.id] || '').toString();
+        let answerText = answerId;
+        if (q.isMcq && answerId) {
+          const selectedOpt = q.options?.find(o => o.id === answerId);
+          if (selectedOpt) {
+            answerText = selectedOpt.text;
+          }
+        }
+
         // Google Apps Script requires userAnswers to be an object of { answer, output }
         formattedUserAnswers[q.id] = {
-          code: (userAnswers[q.id] || '').toString(),
-          answer: (userAnswers[q.id] || '').toString(),
+          code: answerText,
+          answer: answerText,
           output: outStr
         };
       });
