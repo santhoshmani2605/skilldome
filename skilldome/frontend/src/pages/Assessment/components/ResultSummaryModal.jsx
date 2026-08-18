@@ -53,6 +53,16 @@ export default function ResultSummaryModal({ isOpen, onClose, results, onRestart
             <span>{results.syncStatus.success ? 'Responses saved successfully' : 'Could not save — please contact administrator'}</span>
           </div>
         )}
+
+        <div style={{ marginTop: '30px' }}>
+          <button
+            onClick={() => window.location.href = '/'}
+            className="btn btn-primary"
+            style={{ width: '100%', padding: '12px', fontWeight: 'bold' }}
+          >
+            Back to Home
+          </button>
+        </div>
       </div>
     </div>
   );

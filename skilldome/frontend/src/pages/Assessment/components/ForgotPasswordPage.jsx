@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Lock, ArrowRight, Eye, EyeOff, ShieldCheck, KeyRound, Compass, ArrowLeft } from 'lucide-react';
+import { Mail, Lock, ArrowRight, Eye, EyeOff, ShieldCheck, KeyRound, Compass, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import logoImg from '../../../assets/assessment/logo.final.png';
 import { getUserByEmail, saveUser } from '../../../services/authService';
 import { sendOTPToGoogleSheet } from '../../../services/googleSheetService';

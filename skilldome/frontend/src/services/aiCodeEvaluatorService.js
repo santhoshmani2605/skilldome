@@ -440,9 +440,15 @@ export const evaluateCodeWithAIAgent = async ({
   const printMatches = sourceCode.match(/(?:print|console\.log|System\.out\.print(?:ln)?|cout\s*<<)\s*\(\s*["']([^"']+)["']/);
   const dynamicPrint = printMatches ? printMatches[1] : null;
 
-  let finalOutput = correctAnswer || 'Process exited with code 0.';
-  if (isPassed && dynamicPrint && !finalOutput.includes(dynamicPrint)) {
-      finalOutput = dynamicPrint + '\n' + finalOutput;
+  let finalOutput = 'Process exited with code 0.';
+  if (isPassed) {
+      if (correctAnswer && dynamicPrint && dynamicPrint.includes(correctAnswer)) {
+          finalOutput = correctAnswer; // Force exact match if print contains correct answer
+      } else if (dynamicPrint) {
+          finalOutput = dynamicPrint;
+      } else if (correctAnswer) {
+          finalOutput = correctAnswer;
+      }
   }
 
   const actualOutput = isPassed

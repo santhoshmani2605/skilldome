@@ -298,6 +298,11 @@ export default function App() {
   const handleSubmitTest = async () => {
     // Prevent double submission
     if (isSubmitting) return;
+    
+    if (!window.confirm("Are you sure you want to submit the assessment?")) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
