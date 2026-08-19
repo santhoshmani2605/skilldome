@@ -7,14 +7,12 @@ export default function LoginPage({ onNext, onGoToRegister, onGoToForgotPassword
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [interestType, setInterestType] = useState(''); // 'coding' | 'non-coding'
   const [errors, setErrors] = useState({});
 
   const validate = () => {
     const errs = {};
     if (!email.trim()) errs.email = 'Please enter your email address';
     if (!password.trim()) errs.password = 'Please enter your password';
-    if (!interestType) errs.interestType = 'Please select your assessment stream';
     return errs;
   };
 
@@ -39,8 +37,7 @@ export default function LoginPage({ onNext, onGoToRegister, onGoToForgotPassword
 
     // Pass merged info forward
     onNext({
-      ...storedUser,
-      interestType
+      ...storedUser
     });
   };
 
@@ -205,58 +202,7 @@ export default function LoginPage({ onNext, onGoToRegister, onGoToForgotPassword
               {errors.password && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '4px', fontWeight: 600 }}>{errors.password}</p>}
             </div>
 
-            {/* Stream Selection */}
-            <div>
-              <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.5px', color: '#334155', marginBottom: '8px' }}>
-                Choose Your Assessment Track
-              </label>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                
-                <div
-                  onClick={() => { setInterestType('coding'); setErrors(prev => ({...prev, interestType: ''})); }}
-                  style={{
-                    padding: '16px',
-                    borderRadius: '16px',
-                    border: interestType === 'coding' ? '2px solid #4f46e5' : '1px solid #cbd5e1',
-                    background: interestType === 'coding' ? 'linear-gradient(135deg, #e0e7ff 0%, #eef2ff 100%)' : '#f8fafc',
-                    boxShadow: interestType === 'coding' ? '0 4px 14px rgba(79, 70, 229, 0.15)' : 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.25s ease',
-                    position: 'relative'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <Code size={22} color={interestType === 'coding' ? '#4f46e5' : '#64748b'} />
-                    {interestType === 'coding' && <CheckCircle2 size={18} color="#4f46e5" />}
-                  </div>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: interestType === 'coding' ? '#4f46e5' : '#0f172a' }}>Coding</h4>
-                  <p style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>Software & Programming</p>
-                </div>
 
-                <div
-                  onClick={() => { setInterestType('non-coding'); setErrors(prev => ({...prev, interestType: ''})); }}
-                  style={{
-                    padding: '16px',
-                    borderRadius: '16px',
-                    border: interestType === 'non-coding' ? '2px solid #0284c7' : '1px solid #cbd5e1',
-                    background: interestType === 'non-coding' ? 'linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%)' : '#f8fafc',
-                    boxShadow: interestType === 'non-coding' ? '0 4px 14px rgba(2, 132, 199, 0.15)' : 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.25s ease',
-                    position: 'relative'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <Briefcase size={22} color={interestType === 'non-coding' ? '#0284c7' : '#64748b'} />
-                    {interestType === 'non-coding' && <CheckCircle2 size={18} color="#0284c7" />}
-                  </div>
-                  <h4 style={{ fontSize: '0.95rem', fontWeight: 700, color: interestType === 'non-coding' ? '#0284c7' : '#0f172a' }}>Non-Coding</h4>
-                  <p style={{ fontSize: '0.78rem', color: '#64748b', marginTop: '2px' }}>Aptitude & Core Topics</p>
-                </div>
-
-              </div>
-              {errors.interestType && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '6px', fontWeight: 600 }}>{errors.interestType}</p>}
-            </div>
 
             <button
               onClick={handleLogin}

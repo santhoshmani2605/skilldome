@@ -8,7 +8,6 @@ const LEVEL_OPTIONS = [
 ];
 
 export default function InterestTopicsPage({
-  interestType,
   availableTopics = [],
   allQuestions = [],
   initialSelectedCategoryConfigs = {}, // { 'Java': 'Basic', 'Python': 'Advanced' }
@@ -21,8 +20,19 @@ export default function InterestTopicsPage({
 
   const selectedCategories = Object.keys(categoryConfigs);
 
-  const title = interestType === 'coding' ? 'Coding Languages & Tracks' : 'Non-Coding Core Domains';
-  const domainLabel = interestType === 'coding' ? 'Coding' : 'Non-Coding';
+  // Categorize topics
+  const codingTopics = [];
+  const nonCodingTopics = [];
+  availableTopics.forEach(topic => {
+    const q = allQuestions.find(q => q.category === topic);
+    if (q) {
+      if ((q.domain || '').toLowerCase() === 'coding') {
+        codingTopics.push(topic);
+      } else {
+        nonCodingTopics.push(topic);
+      }
+    }
+  });
 
   const toggleCategory = (topic) => {
     setValidationError('');
@@ -63,6 +73,90 @@ export default function InterestTopicsPage({
     onStartAssessment(categoryConfigs);
   };
 
+  const renderTopic = (topic) => {
+    const isSelected = Boolean(categoryConfigs[topic]);
+    const currentLevel = categoryConfigs[topic] || 'Basic';
+    const countForTopic = allQuestions.filter(q => q.category === topic).length;
+
+    return (
+      <div
+        key={topic}
+        style={{
+          padding: '18px 20px',
+          borderRadius: '14px',
+          border: isSelected ? '2px solid var(--accent-primary)' : '1px solid var(--border-color)',
+          background: isSelected ? 'rgba(99, 102, 241, 0.08)' : 'var(--bg-input)',
+          transition: 'all 0.2s ease',
+          boxShadow: isSelected ? '0 4px 16px rgba(99, 102, 241, 0.15)' : 'none'
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px' }}>
+          {/* Topic Title & Checkbox */}
+          <div 
+            onClick={() => toggleCategory(topic)}
+            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px', flex: 1, minWidth: '200px' }}
+          >
+            <div style={{
+              width: '24px',
+              height: '24px',
+              borderRadius: '6px',
+              border: isSelected ? '2px solid var(--accent-primary)' : '2px solid var(--border-color)',
+              background: isSelected ? 'var(--accent-primary)' : 'transparent',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.2s ease'
+            }}>
+              {isSelected && <CheckCircle2 size={16} color="#fff" />}
+            </div>
+            <div>
+              <span style={{ fontWeight: 700, fontSize: '1.05rem', color: isSelected ? 'var(--accent-primary)' : 'var(--text-main)', display: 'block' }}>
+                {topic}
+              </span>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)' }}>
+                {countForTopic} Questions available in bank
+              </span>
+            </div>
+          </div>
+
+          {/* Per-Category Level Selector */}
+          {isSelected && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '6px' }}>
+              <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', marginRight: '4px', width: '100%', display: 'block', marginBottom: '4px' }}>
+                Level:
+              </span>
+              {LEVEL_OPTIONS.map(lvl => {
+                const isLvlSelected = currentLevel === lvl.id;
+                return (
+                  <button
+                    key={lvl.id}
+                    type="button"
+                    onClick={() => setCategoryLevel(topic, lvl.id)}
+                    style={{
+                      padding: '8px 12px',
+                      borderRadius: '8px',
+                      fontSize: '0.78rem',
+                      fontWeight: isLvlSelected ? 700 : 600,
+                      border: isLvlSelected ? `2px solid ${lvl.color}` : '1px solid var(--border-color)',
+                      background: isLvlSelected ? lvl.bg : 'var(--bg-card-solid)',
+                      color: isLvlSelected ? lvl.color : 'var(--text-muted)',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease',
+                      flex: '1',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {lvl.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -86,19 +180,19 @@ export default function InterestTopicsPage({
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <span style={{
-            background: interestType === 'coding' ? 'rgba(99, 102, 241, 0.15)' : 'rgba(6, 182, 212, 0.15)',
-            color: interestType === 'coding' ? 'var(--accent-primary)' : 'var(--accent-secondary)',
+            background: 'rgba(99, 102, 241, 0.15)',
+            color: 'var(--accent-primary)',
             fontSize: '0.8rem',
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '1px',
             padding: '6px 16px',
             borderRadius: '20px',
-            border: `1px solid ${interestType === 'coding' ? 'rgba(99, 102, 241, 0.3)' : 'rgba(6, 182, 212, 0.3)'}`,
+            border: '1px solid rgba(99, 102, 241, 0.3)',
             display: 'inline-block',
             marginBottom: '12px'
           }}>
-            {domainLabel} Track Configuration
+            All Tracks Configuration
           </span>
           <h1 style={{ fontSize: '1.9rem', fontWeight: 800, marginBottom: '8px', color: 'var(--text-main)' }}>
             Select Categories & Specific Difficulty
@@ -113,7 +207,7 @@ export default function InterestTopicsPage({
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
             <div>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-main)' }}>
-                Select {title}
+                Select Assessment Subjects
               </h3>
               <p style={{ fontSize: '0.85rem', color: 'var(--text-dim)' }}>
                 Choose categories and set difficulty level per subject
@@ -137,90 +231,34 @@ export default function InterestTopicsPage({
               No specific topics found. All available questions from the question bank will be included.
             </div>
           ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              {availableTopics.map(topic => {
-                const isSelected = Boolean(categoryConfigs[topic]);
-                const currentLevel = categoryConfigs[topic] || 'Basic';
-                const countForTopic = allQuestions.filter(q => q.category === topic).length;
-
-                return (
-                  <div
-                    key={topic}
-                    style={{
-                      padding: '18px 20px',
-                      borderRadius: '14px',
-                      border: isSelected ? '2px solid var(--accent-primary)' : '1px solid var(--border-color)',
-                      background: isSelected ? 'rgba(99, 102, 241, 0.08)' : 'var(--bg-input)',
-                      transition: 'all 0.2s ease',
-                      boxShadow: isSelected ? '0 4px 16px rgba(99, 102, 241, 0.15)' : 'none'
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px' }}>
-                      {/* Topic Title & Checkbox */}
-                      <div 
-                        onClick={() => toggleCategory(topic)}
-                        style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px', flex: 1, minWidth: '200px' }}
-                      >
-                        <div style={{
-                          width: '24px',
-                          height: '24px',
-                          borderRadius: '6px',
-                          border: isSelected ? '2px solid var(--accent-primary)' : '2px solid var(--border-color)',
-                          background: isSelected ? 'var(--accent-primary)' : 'transparent',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          transition: 'all 0.2s ease'
-                        }}>
-                          {isSelected && <CheckCircle2 size={16} color="#fff" />}
-                        </div>
-                        <div>
-                          <span style={{ fontWeight: 700, fontSize: '1.05rem', color: isSelected ? 'var(--accent-primary)' : 'var(--text-main)', display: 'block' }}>
-                            {topic}
-                          </span>
-                          <span style={{ fontSize: '0.78rem', color: 'var(--text-dim)' }}>
-                            {countForTopic} Questions available in bank
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Per-Category Level Selector */}
-                      {isSelected && (
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '6px' }}>
-                          <span style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-muted)', marginRight: '4px', width: '100%', display: 'block', marginBottom: '4px' }}>
-                            Level:
-                          </span>
-                          {LEVEL_OPTIONS.map(lvl => {
-                            const isLvlSelected = currentLevel === lvl.id;
-                            return (
-                              <button
-                                key={lvl.id}
-                                type="button"
-                                onClick={() => setCategoryLevel(topic, lvl.id)}
-                                style={{
-                                  padding: '8px 12px',
-                                  borderRadius: '8px',
-                                  fontSize: '0.78rem',
-                                  fontWeight: isLvlSelected ? 700 : 600,
-                                  border: isLvlSelected ? `2px solid ${lvl.color}` : '1px solid var(--border-color)',
-                                  background: isLvlSelected ? lvl.bg : 'var(--bg-card-solid)',
-                                  color: isLvlSelected ? lvl.color : 'var(--text-muted)',
-                                  cursor: 'pointer',
-                                  transition: 'all 0.2s ease',
-                                  flex: '1',
-                                  textAlign: 'center'
-                                }}
-                              >
-                                {lvl.label}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              
+              {/* CODING SECTION */}
+              {codingTopics.length > 0 && (
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                    <Zap size={20} color="#4f46e5" />
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#4f46e5' }}>Coding</h4>
                   </div>
-                );
-              })}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                    {codingTopics.map(renderTopic)}
+                  </div>
+                </div>
+              )}
+
+              {/* NON-CODING SECTION */}
+              {nonCodingTopics.length > 0 && (
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                    <BookOpen size={20} color="#0284c7" />
+                    <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#0284c7' }}>Non-Coding</h4>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                    {nonCodingTopics.map(renderTopic)}
+                  </div>
+                </div>
+              )}
+
             </div>
           )}
         </div>

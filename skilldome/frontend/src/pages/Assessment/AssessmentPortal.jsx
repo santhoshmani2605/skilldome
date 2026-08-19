@@ -83,20 +83,13 @@ export default function App() {
     loadData();
   }, []);
 
-  // Dynamically filter categories based on selected domain ('coding' vs 'non-coding') from Google Sheet
+  // Extract all available categories from all questions (both coding and non-coding)
   const availableTopics = useMemo(() => {
     if (!allQuestions.length) return [];
 
-    const domainFilter = candidateInfo.interestType === 'coding' ? 'Coding' : 'Non-Coding';
-
-    // Filter questions by Domain property from Google Sheet
-    let matchingDomainQs = allQuestions.filter(q => {
-      return q.domain.toLowerCase() === domainFilter.toLowerCase();
-    });
-
-    const categories = Array.from(new Set(matchingDomainQs.map(q => q.category).filter(Boolean)));
+    const categories = Array.from(new Set(allQuestions.map(q => q.category).filter(Boolean)));
     return categories;
-  }, [allQuestions, candidateInfo.interestType]);
+  }, [allQuestions]);
 
   // Step 1 -> Step 2
   const handleRegistrationNext = (info) => {
