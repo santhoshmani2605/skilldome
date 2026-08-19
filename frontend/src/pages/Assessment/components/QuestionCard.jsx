@@ -39,17 +39,34 @@ export default function QuestionCard({
     if (question?.sampleInput) {
       setShowCustomInput(true);
     }
-    if (question && question.category) {
-      const catLower = question.category.toLowerCase();
-      if (catLower.includes('python')) setSelectedLang('python');
-      else if (catLower.includes('c++') || catLower.includes('cpp')) setSelectedLang('cpp');
-      else if (catLower.includes('java')) setSelectedLang('java');
-      else if (catLower.includes('js') || catLower.includes('javascript') || catLower.includes('react') || catLower.includes('web')) setSelectedLang('javascript');
-      else if (catLower.includes('sql')) setSelectedLang('sql');
-      else if (catLower.includes('c#')) setSelectedLang('csharp');
-      else if (catLower.includes('go') || catLower.includes('golang')) setSelectedLang('go');
-      else if (catLower.includes('rust')) setSelectedLang('rust');
-      else if (catLower.includes('bash') || catLower.includes('shell')) setSelectedLang('bash');
+    
+    // Auto-detect language and lock it
+    if (question) {
+      const searchStr = `${question.category || ''} ${question.type || ''} ${question.question || ''}`.toLowerCase();
+      
+      if (searchStr.includes('python')) {
+        setSelectedLang('python');
+      } else if (searchStr.includes('c++') || searchStr.includes('cpp')) {
+        setSelectedLang('cpp');
+      } else if (/\bc\b/.test(searchStr) || searchStr.includes('c programming')) {
+        setSelectedLang('c');
+      } else if (searchStr.includes('java') && !searchStr.includes('javascript')) {
+        setSelectedLang('java');
+      } else if (searchStr.includes('js') || searchStr.includes('javascript') || searchStr.includes('react')) {
+        setSelectedLang('javascript');
+      } else if (searchStr.includes('sql')) {
+        setSelectedLang('sql');
+      } else if (searchStr.includes('c#') || searchStr.includes('csharp')) {
+        setSelectedLang('csharp');
+      } else if (searchStr.includes('go') || searchStr.includes('golang')) {
+        setSelectedLang('go');
+      } else if (searchStr.includes('rust')) {
+        setSelectedLang('rust');
+      } else if (searchStr.includes('bash') || searchStr.includes('shell')) {
+        setSelectedLang('bash');
+      } else {
+        setSelectedLang('python'); // default fallback
+      }
     }
   }, [question?.id, executionOutput]);
 
@@ -215,6 +232,8 @@ export default function QuestionCard({
               {/* Comprehensive Coding & Scripting Language Dropdown */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <select
+                  disabled={true}
+                  title="Language automatically detected and locked for this question"
                   value={selectedLang}
                   onChange={(e) => setSelectedLang(e.target.value)}
                   style={{
