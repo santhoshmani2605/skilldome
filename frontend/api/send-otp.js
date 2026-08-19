@@ -12,8 +12,8 @@ export default async function handler(req, res) {
   }
 
   // Ensure these environment variables are set in your Vercel project settings
-  const smtpEmail = process.env.SMTP_EMAIL;
-  const smtpPassword = process.env.SMTP_PASSWORD;
+  const smtpEmail = process.env.SMTP_EMAIL || process.env.EMAIL_USER;
+  const smtpPassword = process.env.SMTP_PASSWORD || process.env.EMAIL_PASS;
 
   if (!smtpEmail || !smtpPassword) {
     console.error('SMTP credentials not configured in Vercel environment variables.');
