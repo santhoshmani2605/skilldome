@@ -494,7 +494,8 @@ export const evaluateCodeWithAIAgent = async ({
             finalOutput = dynamicPrint;
         } else if (correctAnswer) {
             finalOutput = correctAnswer;
-      }
+        }
+    }
   }
 
   const actualOutput = isPassed
