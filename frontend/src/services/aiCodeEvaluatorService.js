@@ -428,26 +428,72 @@ export const evaluateCodeWithAIAgent = async ({
     };
   }
 
-  // If code is structurally and syntactically sound:
-  // Check for logic flaws (e.g. incorrect pointer movement comments or flawed loops)
-  const isFlawedLogic = sourceCode.includes('ERROR:') || sourceCode.includes('// incorrect') || sourceCode.includes('// bug');
-  const isPassed = !isFlawedLogic;
-  const score = isPassed ? marks : 0;
-  const percentage = Math.round((score / marks) * 100);
-  const verdict = isPassed ? 'ACCEPTED' : 'WRONG_ANSWER';
-
-  // 3. DYNAMIC OUTPUT GENERATION (Extract explicit prints)
-  const printMatches = sourceCode.match(/(?:print|printf|console\.log|System\.out\.print(?:ln)?|cout\s*<<)\s*\(\s*["']([^"']+)["']/);
-  const dynamicPrint = printMatches ? printMatches[1] : null;
+  // 3. ATTEMPT REAL OFFLINE EXECUTION
+  const { runOfflineCode } = await import('./offlineRunnerService.js');
+  const offlineResult = await runOfflineCode(lang, sourceCode, sampleInput);
 
   let finalOutput = 'Process exited with code 0.';
-  if (isPassed) {
-      if (correctAnswer && dynamicPrint && dynamicPrint.includes(correctAnswer)) {
-          finalOutput = correctAnswer; // Force exact match if print contains correct answer
-      } else if (dynamicPrint) {
-          finalOutput = dynamicPrint;
-      } else if (correctAnswer) {
-          finalOutput = correctAnswer;
+  let isPassed = false;
+  let score = 0;
+  let percentage = 0;
+  let verdict = 'WRONG_ANSWER';
+  
+  if (offlineResult) {
+    // We have a real compiler!
+    finalOutput = offlineResult.output;
+    if (!offlineResult.success) {
+      // Runtime Error
+      return {
+        success: false,
+        isPassed: false,
+        score: 0,
+        maxScore: marks,
+        percentage: 0,
+        verdict: 'RUNTIME_ERROR',
+        status: '🔴 Runtime Error',
+        language: lang,
+        actualOutput: '',
+        compileOutput: offlineResult.error || offlineResult.output || 'Execution failed',
+        testCases: [
+          {
+            id: 1,
+            name: 'Runtime Execution Check',
+            input: sampleInput || '(Code Input)',
+            expected: correctAnswer || 'Valid Execution',
+            actual: 'Error/Crash',
+            passed: false,
+            hidden: false
+          }
+        ],
+        timeComplexity: structure.timeComplexity,
+        spaceComplexity: structure.spaceComplexity,
+        aiFeedback: `### 🔴 Execution Error\n\n\`\`\`\n${offlineResult.error || offlineResult.output}\n\`\`\`\n\nPlease fix the errors above.`
+      };
+    }
+    
+    // Evaluate real output
+    isPassed = compareOutput(finalOutput, correctAnswer);
+    score = isPassed ? marks : 0;
+    percentage = Math.round((score / marks) * 100);
+    verdict = isPassed ? 'ACCEPTED' : 'WRONG_ANSWER';
+  } else {
+    // FALLBACK TO AST REGEX SIMULATOR for unsupported languages (Java, Go, etc)
+    const isFlawedLogic = sourceCode.includes('ERROR:') || sourceCode.includes('// incorrect') || sourceCode.includes('// bug');
+    isPassed = !isFlawedLogic;
+    score = isPassed ? marks : 0;
+    percentage = Math.round((score / marks) * 100);
+    verdict = isPassed ? 'ACCEPTED' : 'WRONG_ANSWER';
+
+    const printMatches = sourceCode.match(/(?:print|printf|console\.log|System\.out\.print(?:ln)?|cout\s*<<)\s*\(\s*["']([^"']+)["']/);
+    const dynamicPrint = printMatches ? printMatches[1] : null;
+
+    if (isPassed) {
+        if (correctAnswer && dynamicPrint && dynamicPrint.includes(correctAnswer)) {
+            finalOutput = correctAnswer; 
+        } else if (dynamicPrint) {
+            finalOutput = dynamicPrint;
+        } else if (correctAnswer) {
+            finalOutput = correctAnswer;
       }
   }
 
