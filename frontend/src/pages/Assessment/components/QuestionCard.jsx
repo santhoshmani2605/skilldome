@@ -215,8 +215,6 @@ export default function QuestionCard({
               {/* Comprehensive Coding & Scripting Language Dropdown */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <select
-                  disabled={true}
-                  title="Language locked for this question"
                   value={selectedLang}
                   onChange={(e) => setSelectedLang(e.target.value)}
                   style={{
