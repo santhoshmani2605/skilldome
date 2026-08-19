@@ -4,7 +4,7 @@
  */
 
 const PISTON_API_ENDPOINTS = [
-  '/api/piston/execute',
+  '/api/execute',
   'https://emkc.org/api/v2/piston/execute',
   'https://piston.engineer/api/v2/execute'
 ];
