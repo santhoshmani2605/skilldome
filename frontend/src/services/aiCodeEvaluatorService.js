@@ -437,7 +437,7 @@ export const evaluateCodeWithAIAgent = async ({
   const verdict = isPassed ? 'ACCEPTED' : 'WRONG_ANSWER';
 
   // 3. DYNAMIC OUTPUT GENERATION (Extract explicit prints)
-  const printMatches = sourceCode.match(/(?:print|console\.log|System\.out\.print(?:ln)?|cout\s*<<)\s*\(\s*["']([^"']+)["']/);
+  const printMatches = sourceCode.match(/(?:print|printf|console\.log|System\.out\.print(?:ln)?|cout\s*<<)\s*\(\s*["']([^"']+)["']/);
   const dynamicPrint = printMatches ? printMatches[1] : null;
 
   let finalOutput = 'Process exited with code 0.';

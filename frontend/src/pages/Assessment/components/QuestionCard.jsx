@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Bookmark, ChevronLeft, ChevronRight, 
+import {
+  Bookmark, ChevronLeft, ChevronRight,
   RefreshCw, Send, Play, Terminal, Cpu
 } from 'lucide-react';
 import { evaluateCodeWithAIAgent } from '../../../services/aiCodeEvaluatorService';
@@ -27,7 +27,7 @@ export default function QuestionCard({
   const [evalStage, setEvalStage] = useState('');
   const [customInput, setCustomInput] = useState('');
   const [showCustomInput, setShowCustomInput] = useState(false);
-  
+
   // Execution Evaluation Output State
   const [evaluationResult, setEvaluationResult] = useState(executionOutput || null);
 
@@ -39,11 +39,11 @@ export default function QuestionCard({
     if (question?.sampleInput) {
       setShowCustomInput(true);
     }
-    
+
     // Auto-detect language and lock it
     if (question) {
       const searchStr = `${question.category || ''} ${question.type || ''} ${question.question || ''}`.toLowerCase();
-      
+
       if (searchStr.includes('python')) {
         setSelectedLang('python');
       } else if (searchStr.includes('c++') || searchStr.includes('cpp')) {
@@ -122,7 +122,7 @@ export default function QuestionCard({
 
   return (
     <div className="glass-panel animate-fade-in" style={{ padding: '28px', minHeight: '520px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-      
+
       {/* Question Header */}
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px', flexWrap: 'wrap', gap: '10px' }}>
@@ -225,7 +225,7 @@ export default function QuestionCard({
         ) : (
           /* Coding Response Box with Professional IDE Compiler Styling */
           <div style={{ marginBottom: '24px' }}>
-            
+
             {/* Top Toolbar */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', marginBottom: '10px', flexWrap: 'wrap', gap: '10px' }}>
 
@@ -322,7 +322,7 @@ export default function QuestionCard({
               overflow: 'hidden',
               boxShadow: '0 10px 40px rgba(15, 23, 42, 0.3)'
             }}>
-              
+
               {/* Editor Tab Chrome */}
               <div style={{
                 display: 'flex',
@@ -541,7 +541,7 @@ export default function QuestionCard({
                               <div style={{ fontSize: '0.82rem' }}>
                                 {!tc.hidden && !tc.passed ? (
                                   <span style={{ color: '#94a3b8' }}>
-                                    Expected: <code style={{ color: '#4ade80', background: '#020617', padding: '2px 6px', borderRadius: '4px', border: '1px solid #1e293b' }}>{tc.expected}</code> &nbsp;|&nbsp; 
+                                    Expected: <code style={{ color: '#4ade80', background: '#020617', padding: '2px 6px', borderRadius: '4px', border: '1px solid #1e293b' }}>{tc.expected}</code> &nbsp;|&nbsp;
                                     Got: <code style={{ color: '#f87171', background: '#020617', padding: '2px 6px', borderRadius: '4px', border: '1px solid #1e293b' }}>{tc.actual || '(empty)'}</code>
                                   </span>
                                 ) : (
